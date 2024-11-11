@@ -8,7 +8,7 @@ html::-webkit-scrollbar { display : none; }
 body {
     margin : 0;
 
-    background-color : rgb(77, 46, 127);
+    background-color : #B5C6B8;
 }
 
 #app-wrapper {
@@ -33,7 +33,7 @@ body {
 #main--header-wrapper span {
     font-size : 2pc;
     font-family : 'Courier New', Courier, monospace;
-    color : white;
+    color : #48523D;
 }
 
 #main--content-wrapper {
@@ -48,6 +48,6 @@ body {
     font-size : 2pc;
     font-family : 'Courier New', Courier, monospace;
     font-weight : bold;
-    color : white;
+    color : #48523D;
     text-decoration : none;
 }
