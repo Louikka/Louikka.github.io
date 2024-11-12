@@ -1,3 +1,12 @@
+@font-face {
+    font-family : 'Antikor';
+    src : url(fonts/Antikor\ Mono\ Regular.ttf);
+}
+
+
+
+
+
 html {
     height : 100%;
     scrollbar-width : none; /**/ overflow : -moz-scrollbars-none; /**/ -ms-overflow-style : none;
@@ -8,46 +17,62 @@ html::-webkit-scrollbar { display : none; }
 body {
     margin : 0;
 
-    background-color : #B5C6B8;
+    background-color : #bbc2d4;
 }
 
 #app-wrapper {
     display : flex;
     flex-direction : column;
     min-height : 100vh;
-}
 
-#main {
-    display : flex;
-    flex-direction : column;
-}
 
-#main--header-wrapper {
-    display : flex;
-    flex-direction : column;
-}
-#main--header-wrapper > div {
-    margin : 10px;
-    text-align : center;
-}
-#main--header-wrapper span {
-    font-size : 2pc;
-    font-family : 'Courier New', Courier, monospace;
-    color : #48523D;
-}
+    #main {
+        display : flex;
+        flex-direction : column;
+    
 
-#main--content-wrapper {
-    display : flex;
-    flex-direction : column;
-}
-#main--content-wrapper > div {
-    margin : 10px;
-    text-align : center;
-}
-#main--content-wrapper a {
-    font-size : 2pc;
-    font-family : 'Courier New', Courier, monospace;
-    font-weight : bold;
-    color : #48523D;
-    text-decoration : none;
+        #main--header-wrapper {
+            display : flex;
+            flex-direction : column;
+
+
+            span {
+                font-size : 2pc;
+                font-family : Antikor, 'Courier New', Courier, monospace;
+                color : #656b73;
+            }
+
+
+            > div {
+                margin : 10px;
+                text-align : center;
+            }
+
+        }
+
+
+        #main--content-wrapper {
+            display : flex;
+            flex-direction : column;
+
+
+            > div {
+                margin : 10px;
+                text-align : center;
+
+
+                a {
+                    font-size : 2pc;
+                    font-family : Antikor, 'Courier New', Courier, monospace;
+                    font-weight : bold;
+                    color : #656b73;
+                    text-decoration : none;
+                }
+
+            }
+
+        }
+
+    }
+
 }
