@@ -1,137 +1,96 @@
 @font-face {
-    font-family : 'Antikor';
-    src : url(fonts/Antikor\ Mono\ Regular.ttf);
+  font-family: "Antikor";
+  src: url(fonts/Antikor\ Mono\ Regular.ttf);
 }
-
-
-
-
-
 html {
-    height : 100%;
-    scrollbar-width : none; /**/ overflow : -moz-scrollbars-none; /**/ -ms-overflow-style : none;
-    scroll-behavior: smooth;
+  height: 100%;
+  scrollbar-width: none; /**/
+  overflow: -moz-scrollbars-none; /**/
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
 }
-html::-webkit-scrollbar { display : none; }
+
+html::-webkit-scrollbar {
+  display: none;
+}
 
 body {
-    margin : 0;
-
-    background-color : #bbc2d4;
+  margin: 0;
+  background-color: #bbc2d4;
 }
 
 #app-wrapper {
-    display : flex;
-    flex-direction : column;
-    min-height : 100vh;
-
-
-    #header {
-        width : 100wh;
-        background-color : #a4aabb;
-
-
-        #header--wrapper {
-            display : flex;
-            flex-direction : row;
-            justify-content : flex-end;
-
-            margin : 0 10%;
-
-            font-size : 1.2pc;
-            font-family : Antikor, 'Courier New', Courier, monospace;
-            color : #656b73;
-
-
-            > span {
-                margin : auto 0;
-
-                transition-property : transform;
-                transition-duration : .2s;
-                transition-timing-function : ease;
-
-                &::after {
-                    content : "/";
-                    font-size : 1.5em;
-                }
-
-                &:hover {
-                    transform : rotate(-30deg);
-                }
-
-            }
-
-
-            > div {
-                margin : 15px 0;
-                padding : 0 15px;
-
-
-                a {
-                    color : #656b73;
-                    text-decoration : none;
-
-                    transition-property : color;
-                    transition-duration : .2s;
-                    transition-timing-function : ease;
-
-                    &:hover, :active {
-                        color : #468578;
-                    }
-
-                }
-
-            }
-
-        }
-
-    }
-
-
-    #main {
-        display : flex;
-        flex-direction : column;
-    
-
-        #main--header-wrapper {
-            display : flex;
-            flex-direction : column;
-
-            font-size : 2pc;
-            font-family : Antikor, 'Courier New', Courier, monospace;
-            color : #656b73;
-
-
-            > div {
-                margin : 10px;
-                text-align : center;
-            }
-
-        }
-
-
-        #main--content-wrapper {
-            display : flex;
-            flex-direction : column;
-
-
-            > div {
-                margin : 10px;
-                text-align : center;
-
-
-                a {
-                    font-size : 2pc;
-                    font-family : Antikor, 'Courier New', Courier, monospace;
-                    font-weight : bold;
-                    color : #656b73;
-                    text-decoration : none;
-                }
-
-            }
-
-        }
-
-    }
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+#app-wrapper #header {
+  width: 100wh;
+  background-color: #a4aabb;
+}
+#app-wrapper #header #header--wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 10%;
+  font-size: 1.2pc;
+  font-family: Antikor, "Courier New", Courier, monospace;
+  color: #656b73;
+}
+#app-wrapper #header #header--wrapper > span {
+  margin: auto 0;
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+#app-wrapper #header #header--wrapper > span::after {
+  content: "/";
+  font-size: 1.5em;
+}
+#app-wrapper #header #header--wrapper > span:hover {
+  transform: rotate(-30deg);
+}
+#app-wrapper #header #header--wrapper > div {
+  margin: 15px 0;
+  padding: 0 15px;
+}
+#app-wrapper #header #header--wrapper > div a {
+  color: #656b73;
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+#app-wrapper #header #header--wrapper > div a:hover, #app-wrapper #header #header--wrapper > div a :active {
+  color: #468578;
+}
+#app-wrapper #main {
+  display: flex;
+  flex-direction: column;
+}
+#app-wrapper #main #main--header-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 2pc;
+  font-family: Antikor, "Courier New", Courier, monospace;
+  color: #656b73;
+}
+#app-wrapper #main #main--header-wrapper > div {
+  margin: 10px;
+  text-align: center;
+}
+#app-wrapper #main #main--content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+#app-wrapper #main #main--content-wrapper > div {
+  margin: 10px;
+  text-align: center;
+}
+#app-wrapper #main #main--content-wrapper > div a {
+  font-size: 2pc;
+  font-family: Antikor, "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: #656b73;
+  text-decoration: none;
+}/*# sourceMappingURL=styles.css.map */
