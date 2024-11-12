@@ -26,6 +26,68 @@ body {
     min-height : 100vh;
 
 
+    #header {
+        width : 100wh;
+        background-color : #a4aabb;
+
+
+        #header--wrapper {
+            display : flex;
+            flex-direction : row;
+            justify-content : flex-end;
+
+            margin : 0 10%;
+
+            font-size : 1.2pc;
+            font-family : Antikor, 'Courier New', Courier, monospace;
+            color : #656b73;
+
+
+            > span {
+                margin : auto 0;
+
+                transition-property : transform;
+                transition-duration : .2s;
+                transition-timing-function : ease;
+
+                &::after {
+                    content : "/";
+                    font-size : 1.5em;
+                }
+
+                &:hover {
+                    transform : rotate(-30deg);
+                }
+
+            }
+
+
+            > div {
+                margin : 15px 0;
+                padding : 0 15px;
+
+
+                a {
+                    color : #656b73;
+                    text-decoration : none;
+
+                    transition-property : color;
+                    transition-duration : .2s;
+                    transition-timing-function : ease;
+
+                    &:hover, :active {
+                        color : #468578;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
     #main {
         display : flex;
         flex-direction : column;
@@ -35,12 +97,9 @@ body {
             display : flex;
             flex-direction : column;
 
-
-            span {
-                font-size : 2pc;
-                font-family : Antikor, 'Courier New', Courier, monospace;
-                color : #656b73;
-            }
+            font-size : 2pc;
+            font-family : Antikor, 'Courier New', Courier, monospace;
+            color : #656b73;
 
 
             > div {
