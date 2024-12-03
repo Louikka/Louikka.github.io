@@ -1,3 +1,3 @@
-# webpage hosted by GitHub
+# webpage hosted by GitHub pages
 
-https://louikka.github.io/
+<https://louikka.github.io/>
