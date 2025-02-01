@@ -1,59 +1,97 @@
 @font-face {
-    font-family : 'Antikor';
-    src : url(fonts/Antikor\ Mono\ Regular.ttf);
+    font-family : 'Noto Sans';
+    src: url('../fonts/NotoSans-VariableFont_wdth\,wght.ttf');
 }
 
 
-
-
-html {
-    height : 100%;
-    scroll-behavior: smooth;
-}
 
 body {
     margin : 0;
+    padding : 0;
 
-    background-color : #bbc2d4;
-    background-image : linear-gradient(135deg, #bbc2d4, #d1c7cd);
+    $gradient-color1 : #dec5e1;
+    $gradient-color2 : #daa2e0;
+
+    background-color : $gradient-color1;
+    background-image : linear-gradient(160deg, $gradient-color1, $gradient-color2);
+
+    font-family : 'Noto Sans', sans-serif;
 }
 
-#app-wrapper {
-    display : flex;
-    flex-direction : column;
+#app {
     min-height : 100vh;
+    padding : 2pc;
+    box-sizing : border-box;
 
 
-    #header {
-        width : 100vw;
-        min-height : 50px;
-        background-color : #a4aabb;
-    }
+    #app_wrapper {
+        padding : 80px 0;
+        border : 1px solid black;
+        text-align : center;
+
+        $font_size-title : 40px;
+        $font_size-big : 32px;
+        $font_size-small : 24px;
 
 
-    #main {
-        display : flex;
-        flex-direction : column;
+        > div {
 
-        margin : 0 50px 0 50px;
+            > .title {
+                margin-bottom : 10px;
+                font-size : $font_size-title;
+            }
 
-
-        #main-text {
-            padding : 100px 0 0 0;
-
-            text-align : center;
+            > .d {
+                font-size : $font_size-small;
 
 
-            span {
-                font-family : Antikor, 'Courier New', Courier, monospace;
-                font-size : 2.5pc;
-                
-                background-image : linear-gradient(to right, #51366f, #468578);
-                color : transparent;
-                background-clip : text;
+                a {
+                    text-decoration : none;
+                    &:visited { color : inherit; }
+                }
+
             }
 
         }
+
+
+
+
+        .profile_image {
+            width : 250px;
+            margin : 0 auto;
+
+
+            > img {
+                display : block;
+                width : 100%;
+                clip-path : circle(closest-side);
+            }
+
+        }
+
+
+        .description {
+            margin-bottom : 60px;
+
+
+            .who {
+                margin-bottom : 10px;
+                font-size : 49px;
+            }
+            .text {
+                font-size : 32px;
+            }
+
+        }
+
+
+        .projects {
+            margin-bottom : 60px;
+        }
+
+
+        .contacts {}
 
     }
 
