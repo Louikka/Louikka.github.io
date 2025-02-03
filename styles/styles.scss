@@ -1,21 +1,31 @@
-@font-face {
-    font-family : 'Noto Sans';
-    src: url('../fonts/NotoSans-VariableFont_wdth\,wght.ttf');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+html {
+    font-size : 100px;
+    @media (max-width : 500px) { font-size : 80px; }
 }
-
-
-
 body {
     margin : 0;
     padding : 0;
 
-    $gradient-color1 : #dec5e1;
-    $gradient-color2 : #daa2e0;
+    $background-color1 : rgb(222, 197, 225) !global;
+    $background-color2 : rgb(218, 162, 224) !global;
+    $background-color3 : rgb(168, 140, 171) !global;
 
-    background-color : $gradient-color1;
-    background-image : linear-gradient(160deg, $gradient-color1, $gradient-color2);
+    background-color : $background-color1;
+    background-image : linear-gradient(160deg, $background-color1, $background-color2);
 
-    font-family : 'Noto Sans', sans-serif;
+    $font-regular : 'Noto Sans', sans-serif !global;
+    $font-mono : 'Montserrat', monospace !global;
+
+    $font-color-regular1 : rgb(24, 0, 24) !global;
+    $font-color-regular2 : rgb(67, 77, 52) !global;
+    $font-color-regular2-hover : rgb(53, 61, 41) !global;
+
+    font-family : $font-regular;
+    color : $font-color-regular1;
 }
 
 #app {
@@ -26,46 +36,20 @@ body {
 
     #app_wrapper {
         padding : 80px 0;
-        border : 1px solid black;
+        border : 1px solid $font-color-regular1;
         text-align : center;
-
-        $font_size-title : 40px;
-        $font_size-big : 32px;
-        $font_size-small : 24px;
-
-
-        > div {
-
-            > .title {
-                margin-bottom : 10px;
-                font-size : $font_size-title;
-            }
-
-            > .d {
-                font-size : $font_size-small;
-
-
-                a {
-                    text-decoration : none;
-                    &:visited { color : inherit; }
-                }
-
-            }
-
-        }
-
-
 
 
         .profile_image {
             width : 250px;
+            height : 250px;
             margin : 0 auto;
+            clip-path : circle(closest-side);
 
 
             > img {
                 display : block;
                 width : 100%;
-                clip-path : circle(closest-side);
             }
 
         }
@@ -77,10 +61,10 @@ body {
 
             .who {
                 margin-bottom : 10px;
-                font-size : 49px;
+                font-size : .49rem;
             }
             .text {
-                font-size : 32px;
+                font-size : .32rem;
             }
 
         }
@@ -91,7 +75,37 @@ body {
         }
 
 
-        .contacts {}
+        .contacts {
+
+            .email {
+                padding : 0 4px;
+
+                cursor : pointer;
+                background-color : $background-color3;
+                border-radius : .04rem;
+                
+                font-family : $font-mono;
+            }
+
+        }
+
+
+        .title {
+            margin-bottom : 10px;
+            font-size : .4rem;
+        }
+        .d {
+            font-size : .24rem;
+
+
+            a {
+                text-decoration : underline 1px;
+                color : $font-color-regular2;
+                &:visited { color : $font-color-regular2; }
+                &:hover { color : $font-color-regular2-hover; }
+            }
+
+        }
 
     }
 
