@@ -1,0 +1,2 @@
+cd %cd%
+tsc --watch
