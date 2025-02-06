@@ -31,6 +31,7 @@ body {
 #app {
     min-height : 100vh;
     padding : 2pc;
+    @media (max-width : 365px) { padding : 2pc 1.5pc; }
     box-sizing : border-box;
 
 
