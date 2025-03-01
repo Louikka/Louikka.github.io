@@ -1,5 +1,8 @@
-document.querySelector('#app .contacts .email')!.addEventListener('click', function() {
+getGitUserInfo();
+getGitUserRepos();
 
-    navigator.clipboard.writeText(this.innerText);
+document.querySelector('#app .contacts .email').addEventListener('click', (event) => {
+
+    navigator.clipboard.writeText((event.currentTarget as HTMLElement).innerText);
 
 });

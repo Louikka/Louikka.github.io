@@ -1,43 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+@font-face {
+    font-family : 'Noto Sans';
+    src : url('../fonts/NotoSans-VariableFont_wdth\,wght.ttf');
+}
+
 
 
 html {
-    font-size : 100px;
-    @media (max-width : 500px) { font-size : 80px; }
+    font-size : 16px;
+    @media (max-width : 500px) { font-size : 12px; }
 }
 body {
     margin : 0;
     padding : 0;
 
-    $background-color1 : rgb(222, 197, 225) !global;
-    $background-color2 : rgb(218, 162, 224) !global;
-    $background-color3 : rgb(168, 140, 171) !global;
+    --background-color1 : rgb(222, 197, 225);
+    --background-color2 : rgb(218, 162, 224);
+    --background-color3 : rgb(168, 140, 171);
 
-    background-color : $background-color1;
-    background-image : linear-gradient(160deg, $background-color1, $background-color2);
+    background-color : var(--background-color1);
+    background-image : linear-gradient(160deg, var(--background-color1), var(--background-color2));
 
-    $font-regular : 'Noto Sans', sans-serif !global;
-    $font-mono : 'Montserrat', monospace !global;
+    --font-regular : 'Noto Sans', sans-serif;
+    --font-mono : 'Montserrat', monospace;
 
-    $font-color-regular1 : rgb(24, 0, 24) !global;
-    $font-color-regular2 : rgb(67, 77, 52) !global;
-    $font-color-regular2-hover : rgb(53, 61, 41) !global;
+    --font-color-regular1 : rgb(24, 0, 24);
+    --font-color-regular2 : rgb(67, 77, 52);
+    --font-color-regular2-hover : rgb(53, 61, 41);
 
-    font-family : $font-regular;
-    color : $font-color-regular1;
+    font-family : var(--font-regular);
+    color : var(--font-color-regular1);
 }
 
 #app {
-    min-height : 100vh;
-    padding : 2pc;
-    @media (max-width : 365px) { padding : 2pc 1.5pc; }
+    width : 100%;
+    min-height : 100%;
+    padding : 2rem;
     box-sizing : border-box;
 
 
     #app_wrapper {
         padding : 80px 0;
-        border : 1px solid $font-color-regular1;
+        border : 1px solid var(--font-color-regular1);
         text-align : center;
 
 
@@ -55,37 +60,36 @@ body {
 
         }
 
-
         .description {
-            margin-bottom : 60px;
+            margin-top : 10px;
 
 
             .who {
                 margin-bottom : 10px;
-                font-size : .49rem;
+                font-size : 3rem;
             }
             .text {
-                font-size : .32rem;
+                font-size : 2rem;
             }
 
         }
 
-
         .projects {
-            margin-bottom : 60px;
+            margin-top : 60px;
         }
 
-
         .contacts {
+            margin-top : 60px;
+
 
             .email {
                 padding : 0 4px;
 
                 cursor : pointer;
-                background-color : $background-color3;
-                border-radius : .04rem;
+                background-color : var(--background-color3);
+                border-radius : 4px;
                 
-                font-family : $font-mono;
+                font-family : var(--font-mono);
             }
 
         }
@@ -93,17 +97,17 @@ body {
 
         .title {
             margin-bottom : 10px;
-            font-size : .4rem;
+            font-size : 2.6rem;
         }
         .d {
-            font-size : .24rem;
+            font-size : 1.5rem;
 
 
             a {
-                text-decoration : underline 1px;
-                color : $font-color-regular2;
-                &:visited { color : $font-color-regular2; }
-                &:hover { color : $font-color-regular2-hover; }
+                text-decoration : underline solid var(--font-color-regular2) 1px;
+                color : var(--font-color-regular2);
+            &:visited { color : var(--font-color-regular2); }
+            &:hover { color : var(--font-color-regular2-hover); }
             }
 
         }
