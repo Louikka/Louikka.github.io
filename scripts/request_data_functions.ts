@@ -56,9 +56,7 @@ function getGitUserRepos() {
 
         interface GitRepo extends Object {
             'name' : string,
-            'description' : string,
-            'has_pages' : boolean,
-            'homepage'? : string
+            'html_url' : string
         };
 
         const d: Array<GitRepo> = xhr.response;
@@ -67,19 +65,9 @@ function getGitUserRepos() {
 
             if (obj.name != "Louikka.github.io") {
 
-                if (obj.has_pages) {
+                let s = `<div class="d"><a class="project" href="${obj.html_url}" target="_blank">${obj.name}</a></div>`;
 
-                    let s = `<div class="d"><a class="project" href="${obj.homepage}" target="_blank">${obj.name}</a></div>`;
-
-                    document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
-
-                } else {
-
-                    let s = `<div class="d">${obj.name}</div>`;
-                    
-                    document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
-
-                }
+                document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
 
             };
 

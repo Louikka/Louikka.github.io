@@ -32,14 +32,8 @@ function getGitUserRepos() {
         var d = xhr.response;
         d.forEach(function (obj) {
             if (obj.name != "Louikka.github.io") {
-                if (obj.has_pages) {
-                    var s = "<div class=\"d\"><a class=\"project\" href=\"".concat(obj.homepage, "\" target=\"_blank\">").concat(obj.name, "</a></div>");
-                    document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
-                }
-                else {
-                    var s = "<div class=\"d\">".concat(obj.name, "</div>");
-                    document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
-                }
+                var s = "<div class=\"d\"><a class=\"project\" href=\"".concat(obj.html_url, "\" target=\"_blank\">").concat(obj.name, "</a></div>");
+                document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
             }
             ;
         });
