@@ -106,8 +106,8 @@ body {
             a {
                 text-decoration : underline solid var(--font-color-regular2) 1px;
                 color : var(--font-color-regular2);
-            &:visited { color : var(--font-color-regular2); }
-            &:hover { color : var(--font-color-regular2-hover); }
+                &:visited { color : var(--font-color-regular2); }
+                &:hover { color : var(--font-color-regular2-hover); }
             }
 
         }

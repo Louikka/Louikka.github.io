@@ -1,12 +1,9 @@
 {
     "compilerOptions" : {
         "module" : "commonjs",
-        "target" : "ES5",
-        "lib" : [
-            "DOM",
-            "ES6"
-        ],
+        "target" : "es2015",
+        
         "removeComments" : true
     },
-    "include" : [ "scripts/**/*" ]
+    "include" : [ "./scripts/**/*" ]
 }
