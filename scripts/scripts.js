@@ -13,8 +13,8 @@ function getGitUserInfo() {
         const url = 'https://api.github.com/users/Louikka';
         let resp = yield fetch(url);
         let d = yield resp.json();
-        document.querySelector('#app .profile_image > img').setAttribute('src', d.avatar_url);
-        document.querySelector('#app .description .who').innerHTML = d.name;
+        document.querySelector('#app .profile_image').innerHTML = `<img src="${d.avatar_url}" />`;
+        document.querySelector('#app .description .who').innerText = d.name;
     });
 }
 ;
@@ -24,9 +24,13 @@ function getGitUserRepos() {
         const url = 'https://api.github.com/users/Louikka/repos';
         let resp = yield fetch(url);
         let d = yield resp.json();
+        document.querySelector('#app .projects').insertAdjacentHTML('beforeend', `
+        <div class="sub-title">Website templates :</div>
+    `);
         d.forEach((obj) => {
-            if (~obj.name.search(/\.website\.layout\.example$/i)) {
-                let s = `<div class="d"><a class="project" href="${obj.html_url}" target="_blank">${obj.name}</a></div>`;
+            const r = /\.website\.layout\.example$/i;
+            if (~obj.name.search(r)) {
+                let s = `<div class="d"><a class="project" href="${obj.html_url}" target="_blank">${obj.name.replace(r, '')}</a></div>`;
                 document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
             }
             ;
@@ -36,4 +40,21 @@ function getGitUserRepos() {
 ;
 document.querySelector('#app .contacts .email').addEventListener('click', (event) => {
     navigator.clipboard.writeText(event.currentTarget.innerText);
+    const popup = document.querySelector('#app .popup-clip_confirm');
+    if (!!popup.isShow) {
+        clearTimeout(popup.timerId);
+        popup.timerId = setTimeout(() => {
+            popup.style.opacity = '0';
+            popup.isShow = false;
+        }, 2000);
+    }
+    else {
+        popup.style.opacity = '1';
+        popup.isShow = true;
+        popup.timerId = setTimeout(() => {
+            popup.style.opacity = '0';
+            popup.isShow = false;
+        }, 2000);
+    }
+    ;
 });
