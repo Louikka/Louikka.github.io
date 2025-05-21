@@ -32,6 +32,22 @@ body {
 
     font-family : var(--font-regular);
     color : var(--font-color-regular1);
+
+
+    a {
+        text-decoration : underline solid var(--font-color-regular2) 1px;
+        color : var(--font-color-regular2);
+        &:visited { color : var(--font-color-regular2); }
+        &:hover { color : var(--font-color-regular2-hover); }
+        
+        &[target="_blank"]::after {
+            content : '\2197';
+
+            margin-left : .2em;
+            font-size : .85em;
+        }
+    }
+
 }
 
 #app {
@@ -75,7 +91,7 @@ body {
                 font-size : 3rem;
             }
             .text {
-                font-size : 2rem;
+                font-size : 1.6rem;
             }
 
         }
@@ -110,16 +126,8 @@ body {
             font-size : 1.7rem;
         }
         .d {
+            padding : .2rem 0;
             font-size : 1.5rem;
-
-
-            a {
-                text-decoration : underline solid var(--font-color-regular2) 1px;
-                color : var(--font-color-regular2);
-                &:visited { color : var(--font-color-regular2); }
-                &:hover { color : var(--font-color-regular2-hover); }
-            }
-
         }
 
     }
@@ -133,12 +141,12 @@ body {
         left : 50%;
         transform : translate(-50%);
 
-        padding : 0 .25rem;
+        padding : .05rem .4rem;
         background-color : var(--background-color3);
         border-radius : .25rem;
 
         text-align : center;
-        font-size : 1.5rem;
+        font-size : 1.2rem;
 
         transition : opacity .1s ease;
     }

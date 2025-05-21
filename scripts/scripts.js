@@ -38,23 +38,25 @@ function getGitUserRepos() {
     });
 }
 ;
-document.querySelector('#app .contacts .email').addEventListener('click', (event) => {
-    navigator.clipboard.writeText(event.currentTarget.innerText);
-    const popup = document.querySelector('#app .popup-clip_confirm');
-    if (!!popup.isShow) {
-        clearTimeout(popup.timerId);
-        popup.timerId = setTimeout(() => {
-            popup.style.opacity = '0';
-            popup.isShow = false;
-        }, 2000);
-    }
-    else {
-        popup.style.opacity = '1';
-        popup.isShow = true;
-        popup.timerId = setTimeout(() => {
-            popup.style.opacity = '0';
-            popup.isShow = false;
-        }, 2000);
-    }
-    ;
+document.querySelectorAll('#app .click_to_copy').forEach((e) => {
+    e.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(event.currentTarget.innerText);
+        const popup = document.querySelector('#app .popup-clip_confirm');
+        if (popup.isShow) {
+            clearTimeout(popup.timerId);
+            popup.timerId = setTimeout(() => {
+                popup.style.opacity = '0';
+                popup.isShow = false;
+            }, 2000);
+        }
+        else {
+            popup.style.opacity = '1';
+            popup.isShow = true;
+            popup.timerId = setTimeout(() => {
+                popup.style.opacity = '0';
+                popup.isShow = false;
+            }, 2000);
+        }
+        ;
+    });
 });

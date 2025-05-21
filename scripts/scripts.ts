@@ -63,36 +63,38 @@ interface HTMLPopUpElement extends HTMLElement {
     timerId: number,
 }
 
-document.querySelector('#app .contacts .email').addEventListener('click', (event) => {
+document.querySelectorAll('#app .click_to_copy').forEach((e) => {
+    e.addEventListener('click', (event) => {
 
-    navigator.clipboard.writeText((event.currentTarget as HTMLElement).innerText);
+        navigator.clipboard.writeText((event.currentTarget as HTMLElement).innerText);
 
 
-    const popup = <HTMLPopUpElement> document.querySelector('#app .popup-clip_confirm');
+        const popup = <HTMLPopUpElement> document.querySelector('#app .popup-clip_confirm');
 
-    if (!!popup.isShow) {
+        if (popup.isShow) {
 
-        clearTimeout(popup.timerId);
+            clearTimeout(popup.timerId);
 
-        popup.timerId = setTimeout(() => {
+            popup.timerId = setTimeout(() => {
 
-            popup.style.opacity = '0';
-            popup.isShow = false;
+                popup.style.opacity = '0';
+                popup.isShow = false;
 
-        }, 2000);
+            }, 2000);
 
-    } else {
+        } else {
 
-        popup.style.opacity = '1';
-        popup.isShow = true;
+            popup.style.opacity = '1';
+            popup.isShow = true;
 
-        popup.timerId = setTimeout(() => {
+            popup.timerId = setTimeout(() => {
 
-            popup.style.opacity = '0';
-            popup.isShow = false;
+                popup.style.opacity = '0';
+                popup.isShow = false;
 
-        }, 2000);
+            }, 2000);
 
-    };
+        };
 
+    });
 });
