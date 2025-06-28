@@ -29,8 +29,7 @@
 }
 
 html {
-    font-size : 1pc;
-    @media (max-width : 500px) { font-size : 12px; }
+    @media (orientation : portrait) { font-size : 12px; }
 }
 body {
     position : relative;
@@ -52,11 +51,16 @@ body {
 
         --side-padding : 5rem;
 
+        @media (orientation : portrait) {
+            --side-padding : 3rem;
+        }
+
 
         > .profile {
             padding : 2rem var(--side-padding) 1rem var(--side-padding);
 
             display : flex;
+            flex-wrap : wrap;
 
 
             .avatar {
@@ -74,7 +78,7 @@ body {
             }
 
             .description {
-                padding : 1rem 0 0 3rem;
+                padding : 1rem 0 0 2.5rem;
 
 
                 > .name {
@@ -118,6 +122,18 @@ body {
                     margin : 0 .75rem;
 
                     border : solid 1px grey;
+                }
+
+
+                @media (orientation : portrait) {
+                    flex-direction : column;
+
+                    > hr {
+                        width : 10rem;
+                        margin : .75rem 0;
+
+                        border : solid 1px grey;
+                    }
                 }
 
             }
