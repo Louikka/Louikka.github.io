@@ -1,100 +1,112 @@
-interface AnyObject {
-    [key: string]: any
-}
+// global event listeners
+window.addEventListener('click', (ev) => {
+
+});
 
 
 
-// request user info
+// main
 
 getGitUserInfo();
 
-async function getGitUserInfo() {
 
-    const url = 'https://api.github.com/users/Louikka';
+document.querySelectorAll('span.click_to_copy').forEach((e) => {
+    e.addEventListener('click', (ev) => {
 
-    let resp = await fetch(url);
-    let d: AnyObject = await resp.json();
-
-
-    document.querySelector('#app .profile_image').innerHTML = `<img src="${d.avatar_url}" />`;
-    document.querySelector<HTMLElement>('#app .description .who').innerText = d.name;
-
-};
+        navigator.clipboard.writeText( (ev.currentTarget as HTMLElement).innerText );
 
 
-// request all user public repositories
+        const dialog = <HTMLDialogElement> document.querySelector('dialog.confirmation');
+        dialog.innerText = 'Copied to the clipboard';
 
-getGitUserRepos();
+        if (dialog.open) {
 
-async function getGitUserRepos() {
+            clearTimeout(+dialog.getAttribute('data-timer_id'));
 
-    const url = 'https://api.github.com/users/Louikka/repos';
-
-    let resp = await fetch(url);
-    let d: AnyObject[] = await resp.json();
-
-
-    document.querySelector('#app .projects').insertAdjacentHTML('beforeend', `
-        <div class="sub-title">Website templates :</div>
-    `);
-
-    d.forEach((obj) => {
-
-        const r = /\.website\.layout\.example$/i;
-
-        if (~obj.name.search(r)) {
-
-            let s = `<div class="d"><a class="project" href="${obj.html_url}" target="_blank">${obj.name.replace(r, '')}</a></div>`;
-
-            document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
-
-        };
-
-    });
-
-};
-
-
-
-// other scripts
-
-interface HTMLPopUpElement extends HTMLElement {
-    isShow: boolean,
-    timerId: number,
-}
-
-document.querySelectorAll('#app .click_to_copy').forEach((e) => {
-    e.addEventListener('click', (event) => {
-
-        navigator.clipboard.writeText((event.currentTarget as HTMLElement).innerText);
-
-
-        const popup = <HTMLPopUpElement> document.querySelector('#app .popup-clip_confirm');
-
-        if (popup.isShow) {
-
-            clearTimeout(popup.timerId);
-
-            popup.timerId = setTimeout(() => {
-
-                popup.style.opacity = '0';
-                popup.isShow = false;
-
-            }, 2000);
+            dialog.setAttribute('data-timer_id', setTimeout(() => { dialog.close() }, 2000).toString());
 
         } else {
 
-            popup.style.opacity = '1';
-            popup.isShow = true;
+            dialog.show();
 
-            popup.timerId = setTimeout(() => {
-
-                popup.style.opacity = '0';
-                popup.isShow = false;
-
-            }, 2000);
+            dialog.setAttribute('data-timer_id', setTimeout(() => { dialog.close() }, 2000).toString());
 
         };
 
     });
 });
+
+
+
+
+
+// functions //////////////////////////////////////////////////////////////////
+
+// request user info
+async function getGitUserInfo() {
+
+    const url = 'https://api.github.com/users/Louikka';
+
+    let resp = await fetch(url);
+    let d: GitUser = await resp.json();
+
+
+    document.querySelector<HTMLImageElement>('.profile .avatar > img').src = d.avatar_url;
+    document.querySelector<HTMLElement>('.profile .description .name').innerText = `${d.login} (${d.name})`;
+    document.querySelector<HTMLElement>('.profile .description .bio').innerText = d.bio;
+
+    document.querySelector<HTMLElement>('.contacts .links .email > span').innerText = d.email;
+    document.querySelector<HTMLAnchorElement>('.contacts .links .git > a').href = d.html_url;
+
+};
+// request all user public repositories
+async function getGitUserRepos() {
+
+    const url = 'https://api.github.com/users/Louikka/repos';
+
+    let resp = await fetch(url);
+    let d = await resp.json();
+
+};
+
+
+
+
+
+// ts interfaces //////////////////////////////////////////////////////////////
+
+interface GitUser {
+    login: string,
+    id: number,
+    node_id: string,
+    avatar_url: string,
+    gravatar_id: string,
+    url: string,
+    html_url: string,
+    followers_url: string,
+    following_url: string,
+    gists_url: string,
+    starred_url: string,
+    subscriptions_url: string,
+    organizations_url: string,
+    repos_url: string,
+    events_url: string,
+    received_events_url: string,
+    type: string,
+    user_view_type: string,
+    site_admin: boolean,
+    name: string,
+    company: any,
+    blog: string,
+    location: any,
+    email: any,
+    hireable: any,
+    bio: string,
+    twitter_username: any,
+    public_repos: number,
+    public_gists: number,
+    followers: number,
+    following: number,
+    created_at: string,
+    updated_at: string
+}

@@ -7,56 +7,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+window.addEventListener('click', (ev) => {
+});
 getGitUserInfo();
+document.querySelectorAll('span.click_to_copy').forEach((e) => {
+    e.addEventListener('click', (ev) => {
+        navigator.clipboard.writeText(ev.currentTarget.innerText);
+        const dialog = document.querySelector('dialog.confirmation');
+        dialog.innerText = 'Copied to the clipboard';
+        if (dialog.open) {
+            clearTimeout(+dialog.getAttribute('data-timer_id'));
+            dialog.setAttribute('data-timer_id', setTimeout(() => { dialog.close(); }, 2000).toString());
+        }
+        else {
+            dialog.show();
+            dialog.setAttribute('data-timer_id', setTimeout(() => { dialog.close(); }, 2000).toString());
+        }
+        ;
+    });
+});
 function getGitUserInfo() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = 'https://api.github.com/users/Louikka';
         let resp = yield fetch(url);
         let d = yield resp.json();
-        document.querySelector('#app .profile_image').innerHTML = `<img src="${d.avatar_url}" />`;
-        document.querySelector('#app .description .who').innerText = d.name;
+        document.querySelector('.profile .avatar > img').src = d.avatar_url;
+        document.querySelector('.profile .description .name').innerText = `${d.login} (${d.name})`;
+        document.querySelector('.profile .description .bio').innerText = d.bio;
+        document.querySelector('.contacts .links .email > span').innerText = d.email;
+        document.querySelector('.contacts .links .git > a').href = d.html_url;
     });
 }
 ;
-getGitUserRepos();
 function getGitUserRepos() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = 'https://api.github.com/users/Louikka/repos';
         let resp = yield fetch(url);
         let d = yield resp.json();
-        document.querySelector('#app .projects').insertAdjacentHTML('beforeend', `
-        <div class="sub-title">Website templates :</div>
-    `);
-        d.forEach((obj) => {
-            const r = /\.website\.layout\.example$/i;
-            if (~obj.name.search(r)) {
-                let s = `<div class="d"><a class="project" href="${obj.html_url}" target="_blank">${obj.name.replace(r, '')}</a></div>`;
-                document.querySelector('#app .projects').insertAdjacentHTML('beforeend', s);
-            }
-            ;
-        });
     });
 }
 ;
-document.querySelectorAll('#app .click_to_copy').forEach((e) => {
-    e.addEventListener('click', (event) => {
-        navigator.clipboard.writeText(event.currentTarget.innerText);
-        const popup = document.querySelector('#app .popup-clip_confirm');
-        if (popup.isShow) {
-            clearTimeout(popup.timerId);
-            popup.timerId = setTimeout(() => {
-                popup.style.opacity = '0';
-                popup.isShow = false;
-            }, 2000);
-        }
-        else {
-            popup.style.opacity = '1';
-            popup.isShow = true;
-            popup.timerId = setTimeout(() => {
-                popup.style.opacity = '0';
-                popup.isShow = false;
-            }, 2000);
-        }
-        ;
-    });
-});

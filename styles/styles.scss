@@ -1,3 +1,6 @@
+@use './def';
+@use './mixins';
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
@@ -7,148 +10,158 @@
 
 
 
-html {
-    font-size : 16px;
-    @media (max-width : 500px) { font-size : 12px; }
-}
-body {
-    margin : 0;
-    padding : 0;
+:root {
+    --color-white : whitesmoke;
+    --color-pink-pale : rgb(227, 210, 227);
+    --color-green : rgb(67, 77, 52);
+    --color-green-hover : rgb(53, 61, 41);
+    --color-placeholder_background : rgb(168, 140, 171);
 
     --background-color1 : rgb(222, 197, 225);
     --background-color2 : rgb(218, 162, 224);
     --background-color3 : rgb(168, 140, 171);
 
-    background-color : var(--background-color1);
-    background-image : linear-gradient(160deg, var(--background-color1), var(--background-color2));
+    --color-regular1 : rgb(24, 0, 24);
+    --color-regular1-hover : rgb(24, 12, 24);
 
     --font-regular : 'Noto Sans', sans-serif;
     --font-mono : 'Montserrat', monospace;
+}
 
-    --font-color-regular1 : rgb(24, 0, 24);
-    --font-color-regular1-hover : rgb(24, 12, 24);
-    --font-color-regular2 : rgb(67, 77, 52);
-    --font-color-regular2-hover : rgb(53, 61, 41);
+html {
+    font-size : 1pc;
+    @media (max-width : 500px) { font-size : 12px; }
+}
+body {
+    position : relative;
+    box-sizing : border-box;
+
+    min-height : 100vh;
+    padding : 2rem;
+
+    background-color : var(--background-color1);
+    background-image : linear-gradient(160deg, var(--background-color1), var(--background-color2));
 
     font-family : var(--font-regular);
-    color : var(--font-color-regular1);
+    color : var(--color-regular1);
+
+
+    main {
+        background-color : var(--color-white);
+        border-radius : 2px;
+
+        --side-padding : 5rem;
+
+
+        > .profile {
+            padding : 2rem var(--side-padding) 1rem var(--side-padding);
+
+            display : flex;
+
+
+            .avatar {
+                width : 10rem;
+                height : 10rem;
+
+                clip-path : circle(closest-side);
+                background-color : var(--color-placeholder_background);
+
+                > img {
+                    width : 100%;
+                    height : 100%;
+                    object-fit : cover;
+                }
+            }
+
+            .description {
+                padding : 1rem 0 0 3rem;
+
+
+                > .name {
+                    font-size : 1.5rem;
+                }
+
+                > .bio {
+                    margin-top : .5rem;
+                }
+
+            }
+
+        }
+
+
+        > hr {
+            margin : 0 var(--side-padding);
+
+            border : solid 1px grey;
+        }
+
+
+        > .contacts {
+            padding : 2rem 4rem;
+
+            background-color : var(--color-pink-pale);
+            border-radius : 0 0 2px 2px;
+
+
+            .links {
+                display : flex;
+                align-items : flex-start;
+
+
+                > .name {
+                    font-size : 1.2rem;
+                }
+
+                > hr {
+                    align-self : stretch;
+                    margin : 0 .75rem;
+
+                    border : solid 1px grey;
+                }
+
+            }
+
+        }
+
+    }
 
 
     a {
-        text-decoration : underline solid var(--font-color-regular2) 1px;
-        color : var(--font-color-regular2);
-        &:visited { color : var(--font-color-regular2); }
-        &:hover { color : var(--font-color-regular2-hover); }
-        
+        text-decoration : underline solid var(--color-green) 1px;
+        color : var(--color-green);
+        &:visited { color : var(--color-green); }
+        &:hover { color : var(--color-green-hover); }
+
         &[target="_blank"]::after {
             content : '\2197';
-
-            margin-left : .2em;
-            font-size : .85em;
         }
     }
 
-}
-
-#app {
-    position : relative;
-    overflow : hidden;
-    box-sizing : border-box;
-
-    width : 100%;
-    min-height : 100%;
-    padding : 2rem;
-
-
-    #app_wrapper {
-        padding : 80px 0;
-        border : 1px solid var(--font-color-regular1);
-        text-align : center;
-
-
-        .profile_image {
-            width : 15.625rem;
-            height : 15.625rem;
-            margin : 0 auto;
-            clip-path : circle(closest-side);
-
-            background-color : var(--background-color3);
-
-
-            > img {
-                display : block;
-                width : 100%;
-            }
-
-        }
-
-        .description {
-            margin-top : .625rem;
-
-
-            .who {
-                margin-bottom : .625rem;
-                font-size : 3rem;
-            }
-            .text {
-                font-size : 1.6rem;
-            }
-
-        }
-
-        .projects {
-            margin-top : 3.75rem;
-        }
-
-        .contacts {
-            margin-top : 3.75rem;
-
-
-            .email {
-                padding : 0 .25rem;
-
-                cursor : pointer;
-                background-color : var(--background-color3);
-                border-radius : .25rem;
-
-                font-family : var(--font-mono);
-            }
-
-        }
-
-
-        .title {
-            margin-bottom : 1rem;
-            font-size : 2.6rem;
-        }
-        .sub-title {
-            margin-bottom : .5rem;
-            font-size : 1.7rem;
-        }
-        .d {
-            padding : .2rem 0;
-            font-size : 1.5rem;
-        }
-
+    .clickable {
+        cursor : pointer;
     }
 
+    span.mono {
+        padding : 0 .25rem;
 
-    .popup-clip_confirm {
+        background-color : var(--color-placeholder_background);
+        border-radius : 2px;
+
+        font-family : var(--font-mono);
+    }
+
+    dialog.confirmation {
         position : fixed;
-        opacity : 0;
+        top : 2%;
+        left : 1%;
 
-        bottom : 2%;
-        left : 50%;
-        transform : translate(-50%);
+        margin : 0;
 
-        padding : .05rem .4rem;
-        background-color : var(--background-color3);
-        border-radius : .25rem;
-
-        text-align : center;
-        font-size : 1.2rem;
-
-        transition : opacity .1s ease;
+        padding : .1rem 1rem;
+        background-color : var(--color-placeholder_background);
+        border : none;
+        border-radius : 2px;
     }
 
 }

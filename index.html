@@ -5,44 +5,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <meta name="description" content="Louikka personal page. Hosted by GitHub pages" />
+    <meta name="keywords" content="personal page, GitHub pages" />
+
     <title>Louikka personal page</title>
 
     <link rel="stylesheet" href="./styles/styles.css" />
+
+    <script src="./scripts/scripts.js" defer></script>
 </head>
 
 
 
 <body>
-    <div id="app">
-        <div id="app_wrapper">
-
-            <div class="profile_image"></div>
-
+    <main>
+        <section class="profile">
+            <div class="avatar"> <img src="" alt="profile_image" /> </div>
             <div class="description">
-                <div class="who">Who??</div>
-                <div class="text">There is nothing... yet.</div>
+                <div class="name"></div>
+                <div class="bio"></div>
             </div>
-
-            <div class="projects">
-                <div class="title">Projects</div>
+        </section>
+        <hr />
+        <section class="projects"></section>
+        <section class="contacts">
+            <div class="links">
+                <div class="name">Contacts</div>
+                <hr />
+                <ul>
+                    <li class="email">
+                        Email : <span class="mono clickable click_to_copy" title="click to copy"></span>
+                    </li>
+                    <li class="git">
+                        GitHub : <a href="">link</a>
+                    </li>
+                </ul>
             </div>
+        </section>
+    </main>
 
-            <div class="contacts">
-                <div class="title">Contacts</div>
-                <div class="d">
-                    <a href="https://github.com/Louikka">GitHub</a>
-                </div>
-                <div class="d">
-                    Email : <span class="email click_to_copy" title="click to copy">lolikadimonaa@gmail.com</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="popup-clip_confirm">Text copied to the clipboard</div>
-    </div>
-
-    <script src="./scripts/scripts.js" defer></script>
+    <dialog class="confirmation" data-timer_id="">confirmed!</dialog>
 </body>
 
 </html>
