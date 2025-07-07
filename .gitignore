@@ -1,2 +1,5 @@
+# VSCode workspace file
 *.code-workspace
+
+# windows batch file
 *.bat
