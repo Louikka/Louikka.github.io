@@ -2,7 +2,8 @@
     "compilerOptions" : {
         "module" : "commonjs",
         "target" : "es2015",
-        "removeComments" : true
+        "removeComments" : true,
+        "outDir": "./js/"
     },
-    "include" : [ "./scripts/**/*" ]
+    "include" : [ "./**/*" ]
 }

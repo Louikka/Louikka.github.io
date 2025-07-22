@@ -1,8 +1,3 @@
-@use './def';
-@use './mixins';
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
 @font-face {
     font-family : 'Noto Sans';
     src : url('../assets/fonts/NotoSans-VariableFont_wdth\,wght.ttf');
@@ -11,138 +6,121 @@
 
 
 :root {
-    --color-white : whitesmoke;
-    --color-pink-pale : rgb(227, 210, 227);
-    --color-green : rgb(67, 77, 52);
-    --color-green-hover : rgb(53, 61, 41);
-    --color-placeholder_background : rgb(168, 140, 171);
+    // color palettes
+    /*
+    --ash-gray: #acbdbaff;
+    --azure-web: #cdddddff;
+    --rose-quartz: #a599b5ff;
+    --jet: #2e2f2fff;
+    --rich-black: #051014ff;
 
-    --background-color1 : rgb(222, 197, 225);
-    --background-color2 : rgb(218, 162, 224);
-    --background-color3 : rgb(168, 140, 171);
+    --alabaster: #e0e2dbff;
+    --timberwolf: #d2d4c8ff;
+    --ash-gray: #b8bdb5ff;
+    --cadet-gray: #889696ff;
+    --hookers-green: #5f7470ff;
 
-    --color-regular1 : rgb(24, 0, 24);
-    --color-regular1-hover : rgb(24, 12, 24);
+    --ultra-violet: #6c698dff;
+    --timberwolf: #d4d2d5ff;
+    --silver: #bfafa6ff;
+    --beaver: #aa968aff;
+    --dim-gray: #6e6a6fff;
 
-    --font-regular : 'Noto Sans', sans-serif;
-    --font-mono : 'Montserrat', monospace;
+    --thistle: #e3c0d3ff;
+    --mountbatten-pink: #95818dff;
+    --paynes-gray: #576066ff;
+    --dark-slate-gray: #2c514cff;
+    --gunmetal: #122932ff;
+
+    --van-dyke: #4e3d42ff;
+    --dim-gray: #6d6466ff;
+    --ash-gray: #9f9f92ff;
+    --tea-green: #c9d5b5ff;
+    --timberwolf: #e3dbdbff;
+    */
 }
 
 html {
     @media (orientation : portrait) { font-size : 12px; }
 }
+* {
+    box-sizing : border-box;
+}
+
 body {
     position : relative;
-    box-sizing : border-box;
 
-    min-height : 100vh;
-    padding : 2rem;
+    margin : 0;
 
-    background-color : var(--background-color1);
-    background-image : linear-gradient(160deg, var(--background-color1), var(--background-color2));
-
-    font-family : var(--font-regular);
-    color : var(--color-regular1);
+    font-family : 'Noto Sans', sans-serif;
 
 
-    main {
-        background-color : var(--color-white);
-        border-radius : 2px;
+    > main {
+        width : 100vw;
+        height : 100vh;
 
-        --side-padding : 5rem;
+        display : grid;
+        //grid-template-columns : ;
+        grid-auto-flow : column;
+        @media (orientation : portrait) { grid-auto-flow : row; }
 
-        @media (orientation : portrait) {
-            --side-padding : 3rem;
+        &.color_palette_1 {
+            --color-a : #acbdbaff;
+            --color-b : #cdddddff;
+            --color-c : #a599b5ff;
+            --color-d : #2e2f2fff;
+            --color-e : #051014ff;
         }
 
 
-        > .profile {
-            padding : 2rem var(--side-padding) 1rem var(--side-padding);
+        > section {
+            flex-grow : 1;
 
-            display : flex;
-            flex-wrap : wrap;
-
-
-            .avatar {
-                width : 10rem;
-                height : 10rem;
-
-                clip-path : circle(closest-side);
-                background-color : var(--color-placeholder_background);
-
-                > img {
-                    width : 100%;
-                    height : 100%;
-                    object-fit : cover;
-                }
-            }
-
-            .description {
-                padding : 1rem 0 0 2.5rem;
-
-
-                > .name {
-                    font-size : 1.5rem;
-                }
-
-                > .bio {
-                    margin-top : .5rem;
-                }
-
-            }
-
-        }
-
-
-        > hr {
-            margin : 0 var(--side-padding);
-
-            border : solid 1px grey;
-        }
-
-
-        > .contacts {
-            padding : 2rem 4rem;
-
-            background-color : var(--color-pink-pale);
-            border-radius : 0 0 2px 2px;
-
-
-            .links {
-                display : flex;
-                align-items : flex-start;
-
-
-                > .name {
-                    font-size : 1.2rem;
-                }
-
-                > hr {
-                    align-self : stretch;
-                    margin : 0 .75rem;
-
-                    border : solid 1px grey;
-                }
-
-
-                @media (orientation : portrait) {
-                    flex-direction : column;
-
-                    > hr {
-                        width : 10rem;
-                        margin : .75rem 0;
-
-                        border : solid 1px grey;
-                    }
-                }
-
-            }
-
+            &:nth-child(5n - 4) { background-color : var(--color-a); }
+            &:nth-child(5n - 3) { background-color : var(--color-b); }
+            &:nth-child(5n - 2) { background-color : var(--color-c); }
+            &:nth-child(5n - 1) { background-color : var(--color-d); }
+            &:nth-child(5n - 0) { background-color : var(--color-e); }
         }
 
     }
 
 
+    > .bottom-links {
+        position : fixed;
+        bottom : 0;
+        right : 10%;
+        transform : translateY(100%);
+
+        padding : .5rem;
+
+        background-color : white;
+        border-radius : .5rem .5rem 0 0;
+
+        transition : transform .2s ease-in-out;
+
+        &.show {
+            transform : translateY(0);
+        }
+
+
+        a {
+            display : block;
+            margin-bottom : .5rem;
+            padding : .2rem;
+            clip-path : circle(closest-side);
+
+            > img {
+                display : block;
+                width : 2.4rem;
+                height : 2.4rem;
+            }
+        }
+
+    }
+
+
+    /*
     a {
         text-decoration : underline solid var(--color-green) 1px;
         color : var(--color-green);
@@ -153,31 +131,6 @@ body {
             content : '\2197';
         }
     }
-
-    .clickable {
-        cursor : pointer;
-    }
-
-    span.mono {
-        padding : 0 .25rem;
-
-        background-color : var(--color-placeholder_background);
-        border-radius : 2px;
-
-        font-family : var(--font-mono);
-    }
-
-    dialog.confirmation {
-        position : fixed;
-        top : 2%;
-        left : 1%;
-
-        margin : 0;
-
-        padding : .1rem 1rem;
-        background-color : var(--color-placeholder_background);
-        border : none;
-        border-radius : 2px;
-    }
+    */
 
 }
