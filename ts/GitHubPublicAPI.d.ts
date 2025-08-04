@@ -1,5 +1,5 @@
 /**
- * Interface of the json file from https\://api.github.com/users/\<username>.
+ * Interface of the json file from https://api.github.com/users/<username>.
  */
 interface GitHubPublicAPIUser {
     login: string,
