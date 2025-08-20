@@ -1,4 +1,4 @@
-*.ini
-
+# Project environment
 *.code-workspace
+*.ini
 *.bat
