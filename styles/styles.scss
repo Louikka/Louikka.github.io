@@ -6,42 +6,17 @@
 
 
 :root {
-    // color palettes
-    /*
-    --ash-gray: #acbdbaff;
-    --azure-web: #cdddddff;
-    --rose-quartz: #a599b5ff;
-    --jet: #2e2f2fff;
-    --rich-black: #051014ff;
+    --background-image-icon-change-palette : url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(36,41,47)" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/><path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/></svg>');
 
-    --alabaster: #e0e2dbff;
-    --timberwolf: #d2d4c8ff;
-    --ash-gray: #b8bdb5ff;
-    --cadet-gray: #889696ff;
-    --hookers-green: #5f7470ff;
-
-    --ultra-violet: #6c698dff;
-    --timberwolf: #d4d2d5ff;
-    --silver: #bfafa6ff;
-    --beaver: #aa968aff;
-    --dim-gray: #6e6a6fff;
-
-    --thistle: #e3c0d3ff;
-    --mountbatten-pink: #95818dff;
-    --paynes-gray: #576066ff;
-    --dark-slate-gray: #2c514cff;
-    --gunmetal: #122932ff;
-
-    --van-dyke: #4e3d42ff;
-    --dim-gray: #6d6466ff;
-    --ash-gray: #9f9f92ff;
-    --tea-green: #c9d5b5ff;
-    --timberwolf: #e3dbdbff;
-    */
+    // #24292f = rgb(36, 41, 47)
 }
 
 html {
-    @media (orientation : portrait) { font-size : 12px; }
+    height : 100%;
+
+    @media (orientation : portrait) {
+        font-size : 12px;
+    }
 }
 * {
     box-sizing : border-box;
@@ -50,8 +25,7 @@ html {
 body {
     position : relative;
 
-    width : 100vw;
-    height : 100vh;
+    height : 100%;
     margin : 0;
 
     font-family : 'Noto Sans', sans-serif;
@@ -61,37 +35,37 @@ body {
         height : 100%;
 
         display : flex;
-        @media (orientation : portrait) { flex-direction : column; }
+        @media (orientation : portrait) { flex-direction : column }
 
-        &.color_palette_1 {
+        &[data-color-palette="1"] {
             --color-a : #acbdba;
             --color-b : #cddddd;
             --color-c : #a599b5;
             --color-d : #2e2f2f;
             --color-e : #051014;
         }
-        &.color_palette_2 {
+        &[data-color-palette="2"] {
             --color-a : #e0e2db;
             --color-b : #d2d4c8;
             --color-c : #b8bdb5;
             --color-d : #889696;
             --color-e : #5f7470;
         }
-        &.color_palette_3 {
+        &[data-color-palette="3"] {
             --color-a : #6c698d;
             --color-b : #d4d2d5;
             --color-c : #bfafa6;
             --color-d : #aa968a;
             --color-e : #6e6a6f;
         }
-        &.color_palette_4 {
+        &[data-color-palette="4"] {
             --color-a : #e3c0d3;
             --color-b : #95818d;
             --color-c : #576066;
             --color-d : #2c514c;
             --color-e : #122932;
         }
-        &.color_palette_5 {
+        &[data-color-palette="5"] {
             --color-a : #4e3d42;
             --color-b : #6d6466;
             --color-c : #9f9f92;
@@ -103,11 +77,55 @@ body {
         > section {
             flex-grow : 1;
 
-            &:nth-child(5n - 4) { background-color : var(--color-a); }
-            &:nth-child(5n - 3) { background-color : var(--color-b); }
-            &:nth-child(5n - 2) { background-color : var(--color-c); }
-            &:nth-child(5n - 1) { background-color : var(--color-d); }
-            &:nth-child(5n - 0) { background-color : var(--color-e); }
+            transition : flex-grow .2s ease;
+
+            &:hover {
+                flex-grow : 1.1;
+            }
+
+            &:nth-child(5n - 4) { background-color : var(--color-a) }
+            &:nth-child(5n - 3) { background-color : var(--color-b) }
+            &:nth-child(5n - 2) { background-color : var(--color-c) }
+            &:nth-child(5n - 1) { background-color : var(--color-d) }
+            &:nth-child(5n - 0) { background-color : var(--color-e) }
+        }
+
+    }
+
+
+    > .change-palette {
+        position : fixed;
+        bottom : 0;
+        right : 14.5%;
+        transform : translateY(100%);
+
+        padding : .5rem;
+
+        background-color : white;
+        border-radius : .5rem .5rem 0 0;
+
+        transition : transform .2s ease-in-out;
+
+        &.show {
+            transform : translateY(0);
+        }
+
+
+        > input {
+            width : 1.5rem;
+            height : 1.5rem;
+            padding : 0;
+
+            background-color : transparent;
+            background-image : var(--background-image-icon-change-palette);
+            background-position : center;
+            background-repeat : no-repeat;
+            background-size : 100%;
+            border : none;
+
+            &:hover, &:focus {
+                cursor : pointer;
+            }
         }
 
     }
@@ -131,7 +149,7 @@ body {
         }
 
 
-        a {
+        > a {
             display : block;
             margin-bottom : .5rem;
             padding : .2rem;

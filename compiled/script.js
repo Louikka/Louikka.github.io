@@ -8,6 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const AVAILIBLE_PALETTES_COUNT = 5;
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.change-palette').classList.add('show');
+});
+document.querySelector('.change-palette > input').addEventListener('click', (ev) => {
+    let _current_palette = document.querySelector('main').getAttribute('data-color-palette');
+    if (_current_palette === null) {
+        throw new ReferenceError(`Element <main> does not have "data-color-palette" attribute.`);
+    }
+    let new_palette = (+_current_palette + 1) % AVAILIBLE_PALETTES_COUNT || AVAILIBLE_PALETTES_COUNT;
+    document.querySelector('main').setAttribute('data-color-palette', new_palette.toString());
+});
 (() => __awaiter(void 0, void 0, void 0, function* () {
     if (document.querySelector('.bottom-links') === null) {
         throw new ReferenceError(`Element <.bottom-links> is null.`);
