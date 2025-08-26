@@ -26,7 +26,7 @@ document.querySelector('.change-palette > input')!.addEventListener('click', (ev
         throw new ReferenceError(`Element <.bottom-links> is null.`);
     }
 
-    const d = await getGitUserInfo();
+    const d = await getGitHubUserInfo();
 
     document.querySelector<HTMLAnchorElement>('.bottom-links a.github')!.href = d.html_url;
     document.querySelector('.bottom-links')!.classList.add('show');
@@ -36,12 +36,12 @@ document.querySelector('.change-palette > input')!.addEventListener('click', (ev
 
 
 
-async function getGitUserInfo(): Promise<GitHubPublicAPIUser>
+async function getGitHubUserInfo(): Promise<GitHubUser>
 {
     const url = 'https://api.github.com/users/Louikka';
 
     let resp = await fetch(url);
-    let d: GitHubPublicAPIUser = await resp.json();
+    let d: GitHubUser = await resp.json();
 
     return d;
 }

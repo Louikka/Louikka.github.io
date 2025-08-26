@@ -1,7 +1,7 @@
 /**
  * Interface of the json file from https://api.github.com/users/{username}.
  */
-interface GitHubPublicAPIUser {
+interface GitHubUser {
     login: string;
     id: number;
     node_id: string;
