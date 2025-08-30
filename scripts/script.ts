@@ -1,6 +1,3 @@
-const AVAILIBLE_PALETTES_COUNT = 5;
-
-
 document.addEventListener('DOMContentLoaded', () =>
 {
     document.querySelector('.change-palette')!.classList.add('show');
@@ -8,15 +5,17 @@ document.addEventListener('DOMContentLoaded', () =>
 
 document.querySelector('.change-palette > input')!.addEventListener('click', (ev) =>
 {
-    let _currentPalette = document.querySelector('main')!.getAttribute('data-color-palette');
+    let _currentPalette = document.body.getAttribute('data-color-palette');
     if (_currentPalette === null)
     {
-        throw new ReferenceError(`Element <main> does not have "data-color-palette" attribute.`);
+        throw new ReferenceError(`Element <body> does not have "data-color-palette" attribute.`);
     }
 
-    let newPalette = (+_currentPalette + 1) % AVAILIBLE_PALETTES_COUNT || AVAILIBLE_PALETTES_COUNT;
+    let newPalette = (+_currentPalette + 1) % COLOR_PALETTES.length;
 
-    document.querySelector('main')!.setAttribute('data-color-palette', newPalette.toString());
+    document.body.style = `--c0:${ COLOR_PALETTES[newPalette][0] };--c1:${ COLOR_PALETTES[newPalette][1] };--c2:${ COLOR_PALETTES[newPalette][2] };--c3:${ COLOR_PALETTES[newPalette][3] };--c4:${ COLOR_PALETTES[newPalette][4] }`;
+
+    document.body.setAttribute('data-color-palette', newPalette.toString());
 });
 
 (async () =>
