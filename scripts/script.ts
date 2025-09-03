@@ -25,7 +25,10 @@ document.querySelector('.change-palette > input')!.addEventListener('click', (ev
         throw new ReferenceError(`Element <.bottom-links> is null.`);
     }
 
-    const d = await getGitHubUserInfo();
+    const d = await getGitHubUserInfo().catch((err) =>
+    {
+        throw err;
+    });
 
     document.querySelector<HTMLAnchorElement>('.bottom-links a.github')!.href = d.html_url;
     document.querySelector('.bottom-links')!.classList.add('show');

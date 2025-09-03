@@ -24,7 +24,9 @@ document.querySelector('.change-palette > input').addEventListener('click', (ev)
     if (document.querySelector('.bottom-links') === null) {
         throw new ReferenceError(`Element <.bottom-links> is null.`);
     }
-    const d = yield getGitHubUserInfo();
+    const d = yield getGitHubUserInfo().catch((err) => {
+        throw err;
+    });
     document.querySelector('.bottom-links a.github').href = d.html_url;
     document.querySelector('.bottom-links').classList.add('show');
 }))();
