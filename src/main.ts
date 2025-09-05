@@ -1,20 +1,25 @@
+import './styles.scss';
+
+
+
+const AVAILABLE_COLOR_PALETTES_COUNT = 5;
+
+
+
 document.addEventListener('DOMContentLoaded', () =>
 {
     document.querySelector('.change-palette')!.classList.add('show');
 });
 
-document.querySelector('.change-palette > input')!.addEventListener('click', (ev) =>
+document.querySelector('.change-palette > input')!.addEventListener('click', () =>
 {
     let _currentPalette = document.body.getAttribute('data-color-palette');
     if (_currentPalette === null)
     {
-        throw new ReferenceError(`Element <body> does not have "data-color-palette" attribute.`);
+        throw new ReferenceError(`Element <body> does not have 'data-color-palette' attribute.`);
     }
 
-    let newPalette = (+_currentPalette + 1) % COLOR_PALETTES.length;
-
-    document.body.style = `--c0:${ COLOR_PALETTES[newPalette][0] };--c1:${ COLOR_PALETTES[newPalette][1] };--c2:${ COLOR_PALETTES[newPalette][2] };--c3:${ COLOR_PALETTES[newPalette][3] };--c4:${ COLOR_PALETTES[newPalette][4] }`;
-
+    let newPalette = (+_currentPalette + 1) % AVAILABLE_COLOR_PALETTES_COUNT;
     document.body.setAttribute('data-color-palette', newPalette.toString());
 });
 
@@ -22,7 +27,7 @@ document.querySelector('.change-palette > input')!.addEventListener('click', (ev
 {
     if (document.querySelector('.bottom-links') === null)
     {
-        throw new ReferenceError(`Element <.bottom-links> is null.`);
+        throw new ReferenceError(`Element <.bottom-links> is not defined.`);
     }
 
     const d = await getGitHubUserInfo().catch((err) =>
