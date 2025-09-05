@@ -9,6 +9,23 @@ import cssnano from 'cssnano';
 
 
 
+const terserConfig = {
+    parse : {},
+    compress : {},
+    mangle : false,
+    format : null,
+    sourceMap : false,
+    ecma : 2016,
+    enclose : false,
+    keep_classnames : true,
+    keep_fnames : true,
+    ie8 : false,
+    module : false,
+    nameCache : null,
+    safari10 : false,
+    toplevel : false,
+};
+
 export default [
     {
         input : 'src/ie.ts',
@@ -18,9 +35,7 @@ export default [
         },
         plugins : [
             typescript(),
-            terser({
-                module : false,
-            }),
+            terser(terserConfig),
         ],
         treeshake : false,
     },
@@ -28,11 +43,11 @@ export default [
         input : 'src/main.ts',
         output : {
             file : 'public/bundle.js',
-            format : 'cjs',
+            format : 'iife',
         },
         plugins : [
             typescript(),
-            terser(),
+            terser(terserConfig),
             scss({
                 fileName : 'bundle.css',
                 processor : () => postcss([

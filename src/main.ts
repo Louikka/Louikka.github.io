@@ -39,6 +39,8 @@ document.querySelector('.change-palette > input')!.addEventListener('click', () 
     document.querySelector('.bottom-links')!.classList.add('show');
 })();
 
+console.log(a);
+
 
 
 
