@@ -11,10 +11,10 @@ import cssnano from 'cssnano';
 
 export default [
     {
-        input : 'src/global.ts',
+        input : 'src/ie.ts',
         output : {
-            file : 'public/bundle-global.js',
-            format : 'es',
+            file : 'public/bundle-ie.js',
+            format : 'cjs',
         },
         plugins : [
             typescript(),
@@ -28,7 +28,7 @@ export default [
         input : 'src/main.ts',
         output : {
             file : 'public/bundle.js',
-            format : 'iife',
+            format : 'cjs',
         },
         plugins : [
             typescript(),
