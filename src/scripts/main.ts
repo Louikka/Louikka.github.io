@@ -1,9 +1,4 @@
-import './styles.scss';
-
-
-
 const AVAILABLE_COLOR_PALETTES_COUNT = 5;
-
 
 
 document.addEventListener('DOMContentLoaded', () =>
@@ -11,16 +6,12 @@ document.addEventListener('DOMContentLoaded', () =>
     document.querySelector('.change-palette')!.classList.add('show');
 });
 
-document.querySelector('.change-palette > input')!.addEventListener('click', () =>
+document.querySelectorAll<HTMLInputElement>('.change-palette > input').forEach((e) =>
 {
-    let _currentPalette = document.body.getAttribute('data-color-palette');
-    if (_currentPalette === null)
+    e.addEventListener('click', () =>
     {
-        throw new ReferenceError(`Element <body> does not have 'data-color-palette' attribute.`);
-    }
-
-    let newPalette = (+_currentPalette + 1) % AVAILABLE_COLOR_PALETTES_COUNT;
-    document.body.setAttribute('data-color-palette', newPalette.toString());
+        changePalette();
+    });
 });
 
 (async () =>
@@ -39,8 +30,6 @@ document.querySelector('.change-palette > input')!.addEventListener('click', () 
     document.querySelector('.bottom-links')!.classList.add('show');
 })();
 
-console.log(a);
-
 
 
 
@@ -53,4 +42,16 @@ async function getGitHubUserInfo(): Promise<GitHubUser>
     let d: GitHubUser = await resp.json();
 
     return d;
+}
+
+function changePalette()
+{
+    let __currentPalette = document.body.getAttribute('data-color-palette');
+    if (__currentPalette === null)
+    {
+        throw new ReferenceError(`Element <body> does not have 'data-color-palette' attribute.`);
+    }
+
+    let newPalette = (+__currentPalette + 1) % AVAILABLE_COLOR_PALETTES_COUNT;
+    document.body.setAttribute('data-color-palette', newPalette.toString());
 }
