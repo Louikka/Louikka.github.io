@@ -1,4 +1,4 @@
 *.code-workspace
 *.ini
-*.bat
-*.rb
+
+node_modules/
