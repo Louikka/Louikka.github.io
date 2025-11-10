@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc & sass src/styles/:public/ --no-source-map",
+    "build-dev": "tsc & sass src/styles/:public/ --no-source-map",
     "watch": "start cmd /k \"tsc -w\" & start cmd /k \"sass src/styles/:public/ --no-source-map -w\"",
     "build": "tsc & sass src/styles/:public/ --no-source-map && postcss public/*.css -r --no-map -u autoprefixer"
   },
